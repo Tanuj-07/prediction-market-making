@@ -4,7 +4,7 @@ This is a market-making bot that trades on Polymarket US with real money. It has
 
 The repository has no code, only the results. **They update automatically every day at 9:30 AM ET**, once the previous day's markets have settled, so everything here is current through yesterday.
 
-Last update: October 4, 2026, 9:16 PM ET (29 days, September 5 to October 3).
+Last update: October 5, 2026, 9:30 AM ET (29 days, September 5 to October 3).
 
 ## Returns
 
@@ -132,5 +132,5 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
 - P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
 - The bot can only use $60 (less during the first two weeks, as the chart above shows). The rest of the account sits idle, so returns are measured against the cap.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.58, which comes from open positions and rounding.
+- Each update is checked against the actual account balance before it's published. The last check was off by $0.45, which comes from open positions and rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.
