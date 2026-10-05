@@ -2,20 +2,20 @@
 
 This is a market-making bot that trades on Polymarket US with real money. It has been running since September 5, 2026, and it uses Kalshi's prices for the same markets as its fair value.
 
-The repository has no code, only the results. **They update automatically every day at 9:30 AM ET**, once the previous day's markets have settled, so everything here is current through yesterday.
+The repository has no code, only the results. **They update automatically every day at noon ET**, once the previous day's markets have settled, so everything here is current through yesterday.
 
-Last update: October 5, 2026, 9:30 AM ET (29 days, September 5 to October 3).
+Last update: October 5, 2026, 12:00 PM ET (30 days, September 5 to October 4).
 
 ## Returns
 
 | | |
 |---|---|
-| Total return on capital | **+84.6%** (+$50.76 on the $60 cap) |
-| Average daily return | **+5.0%** (each day against the cap at the time) |
-| Last 7 days | **+5.3% per day** (+$22.08 total) |
-| Latest version with a full day of data (v12) | **+12.9% per day** over 1.6 days, Oct 2 to Oct 3 |
-| Days up | 19 of 29 (65.5%) |
-| Days up, trading only | 17 of 29 (58.6%) |
+| Total return on capital | **+96.5%** (+$57.90 on the $60 cap) |
+| Average daily return | **+5.2%** (each day against the cap at the time) |
+| Last 7 days | **+5.2% per day** (+$21.65 total) |
+| Latest version with a full day of data (v12) | **+12.9% per day** over 2.4 days, Oct 2 to Oct 4 |
+| Days up | 20 of 30 (66.7%) |
+| Days up, trading only | 18 of 30 (60.0%) |
 | Best / worst day | +$8.70 (+21.7%) on Sep 17 / −$10.62 (−17.7%) on Sep 25 |
 | Worst drawdown | −$10.62 (−17.7% of the cap) |
 
@@ -23,10 +23,10 @@ Where it came from:
 
 | | |
 |---|---|
-| Trading | +$12.95 |
-| Maker rebates | +$26.45 |
+| Trading | +$17.26 |
+| Maker rebates | +$29.28 |
 | Liquidity rewards (now rare) | +$11.36 |
-| Fills / contracts | 16,589 / 23,315 |
+| Fills / contracts | 17,176 / 24,586 |
 | Capital the bot can use | $60 now (earlier: $20 from Sep 5 to Sep 14, $40 from Sep 15 to Sep 21) |
 
 ![Capital the bot is allowed to use](charts/capital.svg)
@@ -73,7 +73,8 @@ Every change ships as a new version. Before a version goes live, I write down wh
 | v09 | Sep 24 to Sep 29 | Adds a soft stop that winds positions down after a losing stretch. | 5.2 | +$1.18 | +$0.23 | +0.4% | −$8.58 | $9.76 | 5,563 |
 | v10 | Sep 29 to Oct 1 | Uses larger orders again. | 2.1 | +$2.79 | +$1.35 | +2.3% | −$2.95 | $5.74 | 2,793 |
 | v11 | Oct 1 to Oct 2 | Drops an outside model input, so fair value comes from Kalshi alone. | 1.0 | +$5.53 | +$5.71 | +9.5% | +$3.08 | $2.45 | 1,328 |
-| v12 | Oct 2 to Oct 4 | Quotes only same-day markets, so nothing is held overnight. | 1.6 | +$12.44 | +$7.77 | +12.9% | +$7.90 | $4.54 | 2,442 |
+| v12 | Oct 2 to Oct 4 | Quotes only same-day markets, so nothing is held overnight. | 2.4 | +$18.51 | +$7.73 | +12.9% | +$11.37 | $7.14 | 3,605 |
+| v13 | Oct 4 to now | Sizes closing orders to the position during a wind-down, so a stop can't flip a position. | 0.2 | +$1.08 | too short | too short | +$0.85 | $0.23 | 107 |
 
 Versions that ran for less than about 18 hours say "too short" instead of per-day figures and aren't in the chart, since stretching a few hours into a full day isn't meaningful. Return per day is measured against the cap that applied at the time.
 
@@ -85,11 +86,11 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 
 | Series | Fills | Contracts | Trading | Rebates | Rewards | Net |
 |---|---:|---:|---:|---:|---:|---:|
-| A | 3,390 | 4,799 | +$4.77 | $5.46 | $0.64 | +$10.87 |
-| B | 3,204 | 4,386 | +$0.84 | $5.76 | $0.90 | +$7.50 |
-| C | 2,640 | 3,583 | −$6.20 | $4.16 | $2.09 | +$0.05 |
-| D | 4,276 | 6,183 | +$22.56 | $6.26 | $0.74 | +$29.56 |
-| E | 3,079 | 4,363 | −$9.02 | $4.81 | $6.99 | +$2.78 |
+| A | 3,485 | 5,005 | +$4.60 | $6.02 | $0.64 | +$11.26 |
+| B | 3,263 | 4,498 | +$0.91 | $6.00 | $0.90 | +$7.81 |
+| C | 2,767 | 3,872 | −$2.97 | $4.94 | $2.09 | +$4.06 |
+| D | 4,327 | 6,301 | +$22.38 | $6.46 | $0.74 | +$29.58 |
+| E | 3,334 | 4,909 | −$7.66 | $5.86 | $6.99 | +$5.19 |
 
 ![Net P&L by market series](charts/series.svg)
 
@@ -97,6 +98,7 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 
 | Date | Version | Fills | Contracts | Trading | Rebates | Rewards | Net | Return | Total |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2026-10-04 | v12 | 587 | 1,271 | +$4.32 | $2.83 | $0.00 | +$7.15 | +11.9% | +$57.90 |
 | 2026-10-03 | v12 | 490 | 1,150 | +$2.92 | $1.96 | $0.00 | +$4.88 | +8.1% | +$50.76 |
 | 2026-10-02 | v12 | 755 | 1,648 | +$1.32 | $3.16 | $0.00 | +$4.48 | +7.5% | +$45.87 |
 | 2026-10-01 | v11 | 570 | 1,395 | +$4.97 | $2.56 | $0.00 | +$7.53 | +12.5% | +$41.40 |
@@ -132,5 +134,5 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
 - P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
 - The bot can only use $60 (less during the first two weeks, as the chart above shows). The rest of the account sits idle, so returns are measured against the cap.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.45, which comes from open positions and rounding.
+- Each update is checked against the actual account balance before it's published. The last check was off by $0.27, which comes from open positions and rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.
