@@ -11,4 +11,4 @@ v08,"Sep 22, 10:11 AM","Sep 24, 4:07 AM",1.75,60,Uses larger orders and raises t
 v09,"Sep 24, 4:07 AM","Sep 29, 8:51 AM",5.20,60,Adds a soft stop that winds positions down after a losing stretch.,3118,5563,-8.58,9.76,0.00,1.18,0.23,0.4,0.02
 v10,"Sep 29, 8:51 AM","Oct 1, 10:16 AM",2.06,60,Uses larger orders again.,1184,2793,-2.95,5.74,0.00,2.79,1.35,2.3,0.10
 v11,"Oct 1, 10:16 AM","Oct 2, 9:32 AM",0.97,60,"Drops an outside model input, so fair value comes from Kalshi alone.",548,1328,3.08,2.45,0.00,5.53,5.71,9.5,0.42
-v12/13,"Oct 2, 9:32 AM",now,2.60,60,"Quotes only same-day markets, so nothing is held overnight. v13 adds a small safety fix for wind-downs.",1665,3712,12.22,7.37,0.00,19.59,7.53,12.5,0.53
+v12/13,"Oct 2, 9:32 AM",now,3.60,60,"Quotes only same-day markets, so nothing is held overnight. v13 adds a small safety fix for wind-downs.",2131,4718,11.13,9.12,0.00,20.25,5.62,9.4,0.43
