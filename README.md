@@ -4,7 +4,7 @@ This is a market-making bot that trades on Polymarket US with real money. It has
 
 The repository has no code, only the results. **They update automatically every day at noon ET**, once the previous day's markets have settled, so everything here is current through yesterday.
 
-Last update: October 7, 2026, 12:00 PM ET (32 days, September 5 to October 6).
+Last update: October 7, 2026, 4:51 PM ET (32 days, September 5 to October 6).
 
 ## Returns
 
@@ -18,6 +18,8 @@ Last update: October 7, 2026, 12:00 PM ET (32 days, September 5 to October 6).
 | Days up, trading only | 18 of 32 (56.2%) |
 | Best / worst day | +$8.70 (+36.8%) on Sep 17 / −$10.62 (−20.7%) on Sep 25 |
 | Worst drawdown | −$10.62 (−20.7% of the capital in use at the time) |
+
+![Cumulative net P&L](charts/cumulative.svg)
 
 Where it came from:
 
@@ -49,8 +51,6 @@ On the risk side, each market has an inventory limit and the bot has a hard cap 
 Every change ships as a new version. Before a version goes live, I write down what it should change and how I'll measure it, and each one runs for at least 48 hours before the next change.
 
 ## Charts
-
-![Cumulative net P&L](charts/cumulative.svg)
 
 ![Daily P&L](charts/daily.svg)
 
@@ -136,5 +136,5 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
 - P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
 - Returns are measured against the capital the bot actually had in use, not the cap. That is the money in open positions plus resting orders, each order counted at what it would cost if it filled, averaged over the hours the bot was running each day. Most mornings it comes within a few dollars of the cap, until the previous day's markets settle. The cap is $60 now, and the rest of the account sits idle.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.25, which comes from open positions and rounding.
+- Each update is checked against the actual account balance before it's published. The last check was off by $0.52, which comes from open positions and rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.
