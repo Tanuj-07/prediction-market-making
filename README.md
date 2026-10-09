@@ -4,7 +4,7 @@ This is a market-making bot that trades on Polymarket US with real money. It has
 
 The repository has no code, only the results. **They update automatically every day at noon ET**, once the previous day's markets have settled, so everything here is current through yesterday.
 
-Last update: October 9, 2026, 12:00 PM ET (34 days, September 5 to October 8).
+Last update: October 9, 2026, 1:57 PM ET (34 days, September 5 to October 8).
 
 ## Returns
 
@@ -42,13 +42,23 @@ That is why the size stays small. I think the strategy is already close to its c
 
 ## How it works
 
-The bot keeps buy and sell orders resting on both sides of every bracket. It makes money from the spread when both sides fill and from the maker rebate the exchange pays on each fill. Early on it also earned the exchange's liquidity rewards, but Polymarket has since changed the formula for those, and under the new one the bot rarely qualifies. Kalshi lists the same contracts with deeper books, so the bot takes its fair value from Kalshi instead of predicting anything itself.
+The bot keeps buy and sell orders resting on both sides of every bracket. It makes money from the spread when both sides fill and from the maker rebate the exchange pays on qualifying fills. Early on it also earned the exchange's liquidity rewards, but Polymarket cut that reward pool on Sep 23 and the bot has rarely qualified since (see the timeline). Kalshi lists the same contracts with deeper books, so the bot takes its fair value from Kalshi instead of predicting anything itself.
 
 Most of the losses come from getting picked off by traders who know something before the market does, and much of the version history is about limiting that.
 
 On the risk side, each market has an inventory limit and the bot has a hard cap on capital. Quotes are pulled when Kalshi moves, a dead-man switch cancels everything if the bot stalls, and a soft stop winds positions down after a bad run. A watchdog checks on all of it every few minutes.
 
-Every change ships as a new version. Before a version goes live, I write down what it should change and how I'll measure it, and each one runs for at least 48 hours before the next change.
+Every change ships as a new version. Before a version goes live, I write down what it should change and how I'll measure it, and each change to the trading logic runs for at least 48 hours before the next one.
+
+## Timeline
+
+Outside events that changed the economics. They are the purple lines on the charts.
+
+| Date (ET) | What happened |
+|---|---|
+| Sep 22 | Switched to collecting Polymarket's maker rebate on qualifying fills. |
+| Sep 23 | Polymarket cut the liquidity reward pool for these markets by 75%. The bot has rarely qualified since. |
+| Oct 9 | Started testing a way to qualify for liquidity rewards again, beginning with tiny orders. |
 
 ## Charts
 
@@ -138,5 +148,5 @@ Each series is one recurring daily market with a few brackets each day. I've lef
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
 - P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
 - Returns are measured against the capital the bot actually had in use, not the cap. That is the money in open positions plus resting orders, each order counted at what it would cost if it filled, averaged over the hours the bot was running each day. Most mornings it comes within a few dollars of the cap, until the previous day's markets settle. The cap is $60 now, and the rest of the account sits idle.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.39, which comes from open positions and rounding.
+- Each update is checked against the actual account balance before it's published. The last check was off by $0.91, which comes from open positions and rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.
